@@ -23,7 +23,7 @@ app.use(logger('dev'))
 
 // now we can set the route path & initialize the API
 router.get('*', (req, res) => {
-    res.json({ message: 'Hello, World!' })
+    res.json({ message: 'API working!' })
 })
 
 router.get('/questions', (req, res) => {
