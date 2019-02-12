@@ -6,9 +6,7 @@ const Schema = mongoose.Schema
 const QuestionsSchema = new Schema(
     {
         question: String,
-        text: String,
         type: String,
-        option: Array,
     },
     { timestamps: true }
 )
