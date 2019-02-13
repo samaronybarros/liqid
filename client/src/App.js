@@ -1,13 +1,23 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
-const Wrapper = styled.div`
-    height: 40px;
+import Survey from './components/Survey'
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    background: #eeeeee;
+    font: 'Montserrat'
+  }
 `
 
 class App extends Component {
     render() {
-        return <Wrapper>App</Wrapper>
+        return (
+            <React.Fragment>
+                <GlobalStyle />
+                <Survey />
+            </React.Fragment>
+        )
     }
 }
 
