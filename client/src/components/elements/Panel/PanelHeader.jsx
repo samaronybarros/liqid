@@ -9,9 +9,21 @@ const Wrapper = styled.div`
     text-align: center;
 `
 
+const Label = styled.p`
+    font-size: 18pt;
+    color: #fff;
+    position: relative;
+    top: 50%;
+    transform: perspective(1px) translateY(-50%);
+`
+
 class PanelHeader extends Component {
     render() {
-        return <Wrapper>{this.props.children}</Wrapper>
+        return (
+            <Wrapper>
+                <Label>{this.props.children}</Label>
+            </Wrapper>
+        )
     }
 }
 
