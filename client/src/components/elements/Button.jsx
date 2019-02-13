@@ -50,7 +50,6 @@ class Button extends Component {
 
     render() {
         const { linkTo, primary, disabled } = this.props
-        console.log('TCL: Button -> render -> primary', primary)
         return (
             <Wrapper primary={primary} disabled={disabled}>
                 <ButtonLink to={linkTo} primary={primary}>
