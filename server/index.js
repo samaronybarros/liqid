@@ -7,7 +7,7 @@ const mongoose = require('mongoose')
 
 const config = require('./config')
 
-const Questions = require('./models/Questions')
+const { Questions, Answers } = require('./models')
 
 const app = express()
 const router = express.Router()
@@ -30,6 +30,31 @@ router.get('/questions', async (req, res) => {
     Questions.find((err, questions) => {
         if (err) return res.json({ success: false, error: err })
         return res.json({ success: true, data: questions })
+    })
+})
+
+router.get('/questions/:id', async (req, res) => {
+    Questions.findOne({ _id: req.params.id }, (err, questions) => {
+        if (err) return res.json({ success: false, error: err })
+        return res.json({ success: true, data: questions })
+    })
+})
+
+router.post('/answer/:id', (req, res) => {
+    const answers = new Answers()
+
+    const { answer } = req.body
+    if (!answer) {
+        return res.json({
+            success: false,
+            error: 'You must provide an answer',
+        })
+    }
+    answers.question = req.params.id
+    answers.answer = answer
+    answers.save(err => {
+        if (err) return res.json({ success: false, error: err })
+        return res.json({ success: true, id: answers._id })
     })
 })
 
