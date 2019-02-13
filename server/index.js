@@ -4,7 +4,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const logger = require('morgan')
 const mongoose = require('mongoose')
-
+var cors = require('cors')
 const config = require('./config')
 
 const { Questions, Answers } = require('./models')
@@ -17,12 +17,22 @@ const API_PORT = config.serverPort || 3000
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(logger('dev'))
+app.use(
+    cors({
+        allowedHeaders: ['sessionId', 'Content-Type'],
+        exposedHeaders: ['sessionId'],
+        origin: '*',
+        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+        preflightContinue: false,
+    })
+)
 
 mongoose.connect(config.serverDb, { useNewUrlParser: true })
 const db = mongoose.connection
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
-router.get('/', (req, res) => {
+router.get('/', (req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*')
     res.json({ message: 'API running!' })
 })
 
