@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
+import Style from '../Style'
+
 const Wrapper = styled.div`
     padding: 0px 8px;
     height: 70px;
-    background: rgb(0, 0, 150, 0.8);
-    color: #000;
+    background: ${Style.primaryColor};
     text-align: center;
 `
 
 const Label = styled.p`
     font-size: 18pt;
-    color: #fff;
+    color: ${Style.textHeaderColor};
     position: relative;
     top: 50%;
     transform: perspective(1px) translateY(-50%);

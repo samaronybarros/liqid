@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
+import Style from '../Style'
+
 const Wrapper = styled.div`
-    background: #ffffff;
+    background: ${Style.panelBackgroundColor};
     width: 800px;
-    box-shadow: 0px 0px 5px 5px #c9c9c9;
+    box-shadow: 0px 0px 5px 5px ${Style.shadow};
     transition: 0.3s;
 
     position: fixed;
@@ -15,8 +17,10 @@ const Wrapper = styled.div`
     margin: auto;
     margin-top: 10px;
 
+    border-radius: 10px;
+
     &:hover {
-        box-shadow: 0px 0px 8px 8px #c9c9c9;
+        box-shadow: 0px 0px 8px 8px ${Style.shadow};
     }
 `
 

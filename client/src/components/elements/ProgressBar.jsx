@@ -2,13 +2,15 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
+import Style from './Style'
+
 const Wrapper = styled.div`
     height: 10px;
     background: linear-gradient(90deg, rgb(0, 0, 150, 0.8) 0%, rgb(0, 0, 150, 0.8) 100%);
     background-repeat: no-repeat;
     background-size: ${props => props.percent}%;
     transition: all 0.2s ease;
-    border: 1px solid rgb(0, 0, 150, 0.8);
+    border: 1px solid ${Style.primaryColor};
     border-radius: 10px;
 `
 
