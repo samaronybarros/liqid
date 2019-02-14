@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { Button, Input, ProgressBar, Radio, RadioGroup } from '../components/elements'
+import { Button, Input, ProgressBar, Radio, RadioGroup, Dropdown } from '../components/elements'
 import { Panel, PanelHeader, PanelDivider, PanelActions } from '../components/elements/Panel'
 
 import styled from 'styled-components'
@@ -25,6 +25,12 @@ class Question extends Component {
 
     handleChangeRadio = event => {
         this.setState({ value: `${event.value} - ${event.description}` })
+    }
+
+    handleChangeDropdown = event => {
+        const value = event.target.value
+        const description = event.target[event.target.selectedIndex].text
+        this.setState({ value: `${value} - ${description}` })
     }
 
     handleClickBack = () => {
@@ -60,6 +66,9 @@ class Question extends Component {
                             </Radio>
                         ))}
                     </RadioGroup>
+                )}
+                {question.type === 'dropdown' && (
+                    <Dropdown options={question.options} onChange={this.handleChangeDropdown} />
                 )}
                 <PanelDivider />
                 <PanelActions>

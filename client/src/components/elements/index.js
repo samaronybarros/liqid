@@ -3,5 +3,6 @@ import Input from './Input'
 import ProgressBar from './ProgressBar'
 import Radio from './Radio'
 import RadioGroup from './RadioGroup'
+import Dropdown from './Dropdown'
 
-export { Button, Input, ProgressBar, Radio, RadioGroup }
+export { Button, Input, ProgressBar, Radio, RadioGroup, Dropdown }

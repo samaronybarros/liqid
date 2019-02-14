@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import { Panel } from '../components/elements/Panel'
-import { Button, Radio, RadioGroup } from '../components/elements'
+import { Button, Dropdown } from '../components/elements'
 
 import api from '../api'
 import Style from './elements/Style'
@@ -34,9 +34,8 @@ const Text = styled.p`
     text-align: center;
 `
 //******************** HAVE TO HAVE ************************************
-//TODO: Create Radio Buttons (multiple inputs, one selectable)
 //TODO: Create DropDown (several options, one selectable)
-//TODO: Create Last Page with the summary of the answers
+//TODO: Create Last Page with the summary of the answers (puts state on Survey)
 //TODO: [BackEnd] Create endpoint to save answers
 //TODO: Make the buttons work
 //TODO: Make input works with type: email, phone number, textarea and password
@@ -73,14 +72,24 @@ class Survey extends Component {
     }
 
     render() {
+        const tmp = [
+            {
+                value: 'M',
+                description: 'Male',
+            },
+            {
+                value: 'F',
+                description: 'Female',
+            },
+            {
+                value: 'O',
+                description: 'Other',
+            },
+        ]
         const Home = () => (
             <Wrapper>
-                <RadioGroup name="test">
-                    <Radio value="1">Page 1</Radio>
-                    <Radio value="2">Page 22222</Radio>
-                    <Radio value="3">Page 3333</Radio>
-                    <Radio value="4">Page 4</Radio>
-                </RadioGroup>
+                <Dropdown options={tmp} />
+
                 <Title>Online Survey</Title>
                 <Text>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sagittis enim ac turpis
