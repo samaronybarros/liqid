@@ -34,7 +34,6 @@ const Text = styled.p`
     text-align: center;
 `
 
-//FIXME: Fix Button length
 //TODO: Create Loader on start
 //TODO: Create post for answer
 //TODO: Create user for answer
@@ -87,7 +86,8 @@ class Survey extends Component {
                 </Text>
                 <Button
                     primary
-                    buttonsize={100}
+                    size={30}
+                    bold
                     linkTo={`/${this.state.questions.length > 0 ? this.state.questions[0]._id : '/'}`}>
                     Start Survey
                 </Button>

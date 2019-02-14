@@ -16,16 +16,15 @@ const disabledStyle = css`
 const Wrapper = styled.button`
     background: ${props => (props.primary ? Style.primaryColor : Style.secondaryColor)};
     color: ${props => (props.primary ? Style.secondaryColor : Style.primaryColor)};
+    font-size: ${props => (props.size ? `${props.size}px` : '1em')};
+    font-weight: ${props => (props.bold ? `700` : null)};
 
-    font-size: 1em;
     margin: 1em;
     padding: 0.25em 1em;
     border: 2px solid ${Style.primaryColor};
     border-radius: 10px;
     display: block;
     cursor: pointer;
-
-    font-size: ${props => (props.buttonsize ? `${props.buttonsize}px` : null)};
 
     ${props => props.disabled && disabledStyle};
 `
@@ -46,6 +45,10 @@ class Button extends Component {
          */
         primary: PropTypes.bool,
         /**
+         * Indicates if the button text is bold
+         */
+        bold: PropTypes.bool,
+        /**
          * Whether the button is disabled or not
          * This prevents any pointer events on the button
          */
@@ -53,10 +56,10 @@ class Button extends Component {
     }
 
     render() {
-        const { linkTo, primary, disabled, buttonsize, onClick } = this.props
+        const { linkTo, primary, disabled, size, bold, onClick } = this.props
         return (
-            <Wrapper primary={primary} disabled={disabled}>
-                <ButtonLink to={linkTo} primary={primary ? 1 : 0} onClick={onClick} buttonsize={buttonsize}>
+            <Wrapper primary={primary} disabled={disabled} size={size} bold={bold}>
+                <ButtonLink to={linkTo} primary={primary ? 1 : 0} onClick={onClick}>
                     {this.props.children}
                 </ButtonLink>
             </Wrapper>
