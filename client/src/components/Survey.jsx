@@ -34,20 +34,19 @@ const Text = styled.p`
     text-align: center;
 `
 
-//TODO: Fix handleChange
-//TODO: Fix input receiving same value
-//TODO: Fix Button length
-//TODO: Creates Loader on start
-//TODO: Creates post for answer
-//TODO: Creates user for answer
-//TODO: Creates ProgressBar
-//TODO: Creates DropDown (several options, one selectable)
-//TODO: Creates Radio Buttons (multiple inputs, one selectable)
-//TODO: Creates Last Page with the summary of the answers
+//FIXME: Fix Button length
+//TODO: Create Loader on start
+//TODO: Create post for answer
+//TODO: Create user for answer
+//TODO: Create DropDown (several options, one selectable)
+//TODO: Create Radio Buttons (multiple inputs, one selectable)
+//TODO: Create Last Page with the summary of the answers
+//TODO: [BackEnd] Create endpoint to save questions
 //TODO: Make the buttons work
 //TODO: Make input works with type: email, phone number, textarea and password
 //TODO: Order question by sort field
-//TODO: Refactor the code to keep CSS reusable
+//TODO: Transition animated
+
 class Survey extends Component {
     constructor(props) {
         super(props)
