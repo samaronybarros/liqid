@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 const RadioGroupWrapper = styled.div`
-    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
 `
 
-class RadioGroup extends React.Component {
+class RadioGroup extends Component {
     constructor(props) {
         super(props)
         this.options = []
@@ -47,6 +49,7 @@ class RadioGroup extends React.Component {
     }
 
     render() {
+        console.log(this.props)
         let children = React.Children.map(this.props.children, child => {
             return React.cloneElement(child, {
                 ref: component => {

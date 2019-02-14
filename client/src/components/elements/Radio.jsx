@@ -17,8 +17,10 @@ const RadioButton = styled.button`
     border: 1px solid ${Style.primaryColor};
     outline: none;
 
-    width: 10vw;
+    width: 8vw;
     height: 5vw;
+
+    font-size: 14px;
 
     ${props => props.selected && selectedradio};
 `
@@ -39,7 +41,7 @@ class Radio extends Component {
 
             this.setState({ selected, value, description })
 
-            //onSelect({ value, description })
+            this.props.onSelect({ value, description })
             onChange(selected, this)
         }
     }
@@ -52,7 +54,7 @@ class Radio extends Component {
         let selected = this.state.selected ? 'active' : ''
 
         return (
-            <RadioButton selected={selected} onClick={this.toggle}>
+            <RadioButton selected={selected} onClick={this.toggle} onSelect={this.props.onSelect}>
                 {this.props.children}
             </RadioButton>
         )

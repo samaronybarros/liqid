@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import { Panel } from '../components/elements/Panel'
-import { Button } from '../components/elements'
+import { Button, Radio, RadioGroup } from '../components/elements'
 
 import api from '../api'
 import Style from './elements/Style'
@@ -33,16 +33,17 @@ const Text = styled.p`
     margin-right: 30px;
     text-align: center;
 `
-
-//TODO: Create Loader on start
-//TODO: Create post for answer
-//TODO: Create user for answer
-//TODO: Create DropDown (several options, one selectable)
+//******************** HAVE TO HAVE ************************************
 //TODO: Create Radio Buttons (multiple inputs, one selectable)
+//TODO: Create DropDown (several options, one selectable)
 //TODO: Create Last Page with the summary of the answers
-//TODO: [BackEnd] Create endpoint to save questions
+//TODO: [BackEnd] Create endpoint to save answers
 //TODO: Make the buttons work
 //TODO: Make input works with type: email, phone number, textarea and password
+
+//******************** GOOD TO HAVE ************************************
+//TODO: Create Loader on start
+//TODO: Create user for answer
 //TODO: Order question by sort field
 //TODO: Transition animated
 
@@ -74,6 +75,12 @@ class Survey extends Component {
     render() {
         const Home = () => (
             <Wrapper>
+                <RadioGroup name="test">
+                    <Radio value="1">Page 1</Radio>
+                    <Radio value="2">Page 22222</Radio>
+                    <Radio value="3">Page 3333</Radio>
+                    <Radio value="4">Page 4</Radio>
+                </RadioGroup>
                 <Title>Online Survey</Title>
                 <Text>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sagittis enim ac turpis

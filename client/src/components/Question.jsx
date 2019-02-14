@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { Button, Input, ProgressBar } from '../components/elements'
+import { Button, Input, ProgressBar, Radio, RadioGroup } from '../components/elements'
 import { Panel, PanelHeader, PanelDivider, PanelActions } from '../components/elements/Panel'
 
 import styled from 'styled-components'
@@ -19,8 +19,12 @@ class Question extends Component {
         }
     }
 
-    handleChange = event => {
+    handleChangeInput = event => {
         this.setState({ value: event.target.value })
+    }
+
+    handleChangeRadio = event => {
+        this.setState({ value: `${event.value} - ${event.description}` })
     }
 
     handleClickBack = () => {
@@ -40,12 +44,23 @@ class Question extends Component {
                     <ProgressBar current={index} max={questionsLength} />
                 </Wrapper>
                 <PanelHeader>{question.description}</PanelHeader>
-                <Input
-                    type={question.type}
-                    placeholder={question.description}
-                    onChange={this.handleChange}
-                    value={this.state.value}
-                />
+                {question.type === 'input' && (
+                    <Input
+                        type={question.type}
+                        placeholder={question.description}
+                        onChange={this.handleChangeInput}
+                        value={this.state.value}
+                    />
+                )}
+                {question.type === 'radio' && (
+                    <RadioGroup name={'radio'}>
+                        {question.options.map((option, index) => (
+                            <Radio key={index} value={option.value} onSelect={this.handleChangeRadio}>
+                                {option.description}
+                            </Radio>
+                        ))}
+                    </RadioGroup>
+                )}
                 <PanelDivider />
                 <PanelActions>
                     <Button
