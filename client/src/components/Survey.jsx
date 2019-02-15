@@ -9,8 +9,6 @@ import Question from './Question'
 import { Home, Summary } from '../components/pages'
 
 //******************** HAVE TO HAVE ************************************
-//TODO: Make the buttons work
-//TODO: Make input works with type: email, phone number, textarea and password
 //TODO: Script to create fake-data
 //TODO: Software Documentation at GitHub
 
@@ -22,6 +20,7 @@ import { Home, Summary } from '../components/pages'
 //TODO: Beautify Summary (Maybe a kind of table)
 //TODO: Verify the scrolling
 //TODO: Create cards for each type of question
+//TODO: Make input works with type: email, phone number, textarea and password
 
 class Survey extends Component {
     constructor(props) {

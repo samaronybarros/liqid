@@ -3,8 +3,9 @@ const Schema = mongoose.Schema
 
 const QuestionsSchema = new Schema(
     {
-        question: String,
+        description: String,
         type: String,
+        options: Array,
         sort: Number,
     },
     { timestamps: true }
