@@ -5,9 +5,11 @@ const api = axios.create({
 })
 
 export const loadQuestions = () => api.get('questions')
+export const saveAnswer = newAnswer => api.post('answer', newAnswer)
 
 const apis = {
-    loadQuestions: loadQuestions,
+    loadQuestions,
+    saveAnswer,
 }
 
 export default apis
