@@ -11,7 +11,6 @@ import Question from './Question'
 //TODO: Software Documentation at GitHub
 
 //******************** GOOD TO HAVE ************************************
-//TODO: Create Loader on start
 //TODO: Create user for answer
 //TODO: Order question by sort field
 //TODO: Transition animated

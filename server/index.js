@@ -40,7 +40,7 @@ router.get('/questions', async (req, res) => {
     Questions.find((err, questions) => {
         if (err) return res.json({ success: false, error: err })
         return res.json({ success: true, data: questions })
-    })
+    }).sort('sort')
 })
 
 router.get('/questions/:id', async (req, res) => {
