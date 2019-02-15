@@ -20,7 +20,6 @@ const FlexWrapper = styled.div`
 const QAWrapper = styled.div`
     display: flex;
     flex-direction: row;
-    padding: 10px;
 `
 
 const Title = styled.p`
@@ -29,7 +28,7 @@ const Title = styled.p`
     font-weight: 900;
 `
 
-const Question = styled.td`
+const Question = styled.p`
     font-size: 12pt;
     color: ${Style.questionColor};
     margin-left: 15px;
@@ -38,7 +37,7 @@ const Question = styled.td`
     font-weight: 900;
 `
 
-const Answer = styled.td`
+const Answer = styled.p`
     font-size: 12pt;
     color: ${Style.answerColor};
     margin-left: 15px;
@@ -54,7 +53,7 @@ const Summary = props => (
         <Wrapper>
             {props.questions.map((question, index) => {
                 return (
-                    <QAWrapper>
+                    <QAWrapper key={index}>
                         <Question>{question.description}</Question>
                         <Answer>{props.answers[index]}</Answer>
                     </QAWrapper>

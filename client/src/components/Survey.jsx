@@ -9,7 +9,6 @@ import Question from './Question'
 import { Home, Summary } from '../components/pages'
 
 //******************** HAVE TO HAVE ************************************
-//TODO: Create Last Page with the summary of the answers (puts state on Survey)
 //TODO: [BackEnd] Create endpoint to save answers
 //TODO: Make the buttons work
 //TODO: Make input works with type: email, phone number, textarea and password
@@ -19,6 +18,7 @@ import { Home, Summary } from '../components/pages'
 //TODO: Create user for answer
 //TODO: Order question by sort field
 //TODO: Transition animated
+//TODO: Beautify Summary
 
 class Survey extends Component {
     constructor(props) {
@@ -26,7 +26,7 @@ class Survey extends Component {
 
         this.state = {
             questions: [],
-            answers: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+            answers: [1, 2, 3, 4, 5, 6, 7],
             isLoading: false,
         }
     }
@@ -67,6 +67,8 @@ class Survey extends Component {
                     next={next}
                     questionsLength={this.state.questions.length}
                     updateAnswer={this.updateAnswer}
+                    allQuestion={this.state.questions}
+                    allAnswers={this.state.answers}
                 />
             ) : (
                 <p>Loading...</p>

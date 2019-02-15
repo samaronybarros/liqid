@@ -5,6 +5,9 @@ import { Panel, PanelHeader, PanelDivider, PanelActions } from '../components/el
 
 import styled from 'styled-components'
 
+import api from '../api'
+import { formatAnswer } from '../utils'
+
 const Wrapper = styled.div`
     width: 750px;
     margin: 20px;
@@ -40,6 +43,14 @@ class Question extends Component {
 
     handleClickNext = () => {
         this.props.updateAnswer(this.state.index, this.state.value)
+
+        if (this.state.index === this.props.questionsLength - 1) {
+            const answer = formatAnswer(this.props.allQuestion, this.props.allAnswers)
+
+            const newAnswer = { answer } //JSON.stringify({ answer })
+
+            api.saveAnswer(newAnswer)
+        }
     }
 
     componentDidMount = () => this.setState({ index: this.props.index })
