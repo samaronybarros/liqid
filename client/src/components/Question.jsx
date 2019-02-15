@@ -15,6 +15,7 @@ class Question extends Component {
         super(props)
 
         this.state = {
+            index: '',
             value: '',
         }
     }
@@ -38,8 +39,10 @@ class Question extends Component {
     }
 
     handleClickNext = () => {
-        console.log('Next')
+        this.props.updateAnswer(this.state.index, this.state.value)
     }
+
+    componentDidMount = () => this.setState({ index: this.props.index })
 
     render() {
         const { question, previous, next, index, questionsLength } = this.props
@@ -59,7 +62,7 @@ class Question extends Component {
                     />
                 )}
                 {question.type === 'radio' && (
-                    <RadioGroup name={'radio'}>
+                    <RadioGroup name={question._id}>
                         {question.options.map((option, index) => (
                             <Radio key={index} value={option.value} onSelect={this.handleChangeRadio}>
                                 {option.description}
@@ -79,9 +82,9 @@ class Question extends Component {
                         Back
                     </Button>
                     <Button
-                        linkTo={next || question._id}
+                        linkTo={next || '/summary'}
                         primary
-                        disabled={!this.state.value || !next}
+                        disabled={!this.state.value}
                         onClick={this.handleClickNext}>
                         {next ? 'Next' : 'Finish'}
                     </Button>
