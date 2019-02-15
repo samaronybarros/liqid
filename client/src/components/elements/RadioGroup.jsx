@@ -14,7 +14,7 @@ class RadioGroup extends Component {
         super(props)
         this.options = []
 
-        this.state = { selected: null }
+        this.state = { selected: null, children: null }
     }
 
     getChildContext() {
@@ -48,8 +48,7 @@ class RadioGroup extends Component {
         this.setState({ selected })
     }
 
-    render() {
-        console.log(this.props)
+    componentDidMount = () => {
         let children = React.Children.map(this.props.children, child => {
             return React.cloneElement(child, {
                 ref: component => {
@@ -57,9 +56,14 @@ class RadioGroup extends Component {
                 },
             })
         })
+
+        this.setState({ children })
+    }
+
+    render() {
         return (
-            <RadioGroupWrapper className="radio-group" onChange={this.handleChange}>
-                {children}
+            <RadioGroupWrapper className="radio-group" onChange={this.onChange}>
+                {this.state.children}
             </RadioGroupWrapper>
         )
     }
