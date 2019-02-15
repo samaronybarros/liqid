@@ -34,6 +34,7 @@ class Question extends Component {
     handleChangeDropdown = event => {
         const value = event.target.value
         const description = event.target[event.target.selectedIndex].text
+
         this.setState({ value: `${value} - ${description}` })
     }
 

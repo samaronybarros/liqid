@@ -9,16 +9,19 @@ import Question from './Question'
 import { Home, Summary } from '../components/pages'
 
 //******************** HAVE TO HAVE ************************************
-//TODO: [BackEnd] Create endpoint to save answers
 //TODO: Make the buttons work
 //TODO: Make input works with type: email, phone number, textarea and password
+//TODO: Script to create fake-data
+//TODO: Software Documentation at GitHub
 
 //******************** GOOD TO HAVE ************************************
 //TODO: Create Loader on start
 //TODO: Create user for answer
 //TODO: Order question by sort field
 //TODO: Transition animated
-//TODO: Beautify Summary
+//TODO: Beautify Summary (Maybe a kind of table)
+//TODO: Verify the scrolling
+//TODO: Create cards for each type of question
 
 class Survey extends Component {
     constructor(props) {
@@ -26,13 +29,9 @@ class Survey extends Component {
 
         this.state = {
             questions: [],
-            answers: [1, 2, 3, 4, 5, 6, 7],
+            answers: [],
             isLoading: false,
         }
-    }
-
-    handleQuestion = question => {
-        return <Question question={question} onChange={this.handleChange} />
     }
 
     updateAnswer = (index, answer) => {
@@ -41,6 +40,17 @@ class Survey extends Component {
         answers[index] = answer
 
         this.setState({ answers })
+        console.log('TCL: Survey -> updateAnswer -> answers', this.state.answers)
+    }
+
+    resetAnswers = () => {
+        this.setState({
+            answers: [],
+        })
+    }
+
+    handleStartSurvey = () => {
+        this.resetAnswers()
     }
 
     componentDidMount() {
@@ -75,7 +85,7 @@ class Survey extends Component {
             )
         }
 
-        const CreateRoutes = () => {
+        const QuestionRoutes = () => {
             return this.state.questions.map((question, index) => {
                 return (
                     <Route
@@ -90,8 +100,14 @@ class Survey extends Component {
         return (
             <Router>
                 <Panel>
-                    <Route exact path="/" component={() => Home(this.state)} />
-                    <CreateRoutes />
+                    <Route
+                        exact
+                        path="/"
+                        component={() => (
+                            <Home questions={this.state.questions} onStartSurvey={this.handleStartSurvey} />
+                        )}
+                    />
+                    <QuestionRoutes />
                     <Route path="/summary" component={() => Summary(this.state)} />
                 </Panel>
             </Router>
