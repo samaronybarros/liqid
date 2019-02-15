@@ -54,8 +54,6 @@ router.post('/answer', (req, res) => {
     const answers = new Answers()
 
     const { answer } = req.body
-    console.log('TCL: req.body', req.body)
-    console.log('TCL: answer', answer)
     if (!answer) {
         return res.json({
             success: false,

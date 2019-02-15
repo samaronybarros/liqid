@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 const AnswersSchema = new Schema(
     {
         question: String,
-        answer: String,
+        answer: Array,
     },
     { timestamps: true }
 )

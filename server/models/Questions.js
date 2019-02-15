@@ -5,6 +5,7 @@ const QuestionsSchema = new Schema(
     {
         question: String,
         type: String,
+        sort: Number,
     },
     { timestamps: true }
 )
