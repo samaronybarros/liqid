@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 
 import Style from '../elements/Style'
@@ -45,27 +45,33 @@ const Answer = styled.p`
     text-align: left;
 `
 
-const Summary = props => (
-    <Wrapper>
-        <FlexWrapper>
-            <Title>Summary</Title>
-        </FlexWrapper>
-        <Wrapper>
-            {props.questions.map((question, index) => {
-                return (
-                    <QAWrapper key={index}>
-                        <Question>{question.description}</Question>
-                        <Answer>{props.answers[index]}</Answer>
-                    </QAWrapper>
-                )
-            })}
-        </Wrapper>
-        <FlexWrapper>
-            <Button primary size={30} bold linkTo={`/`}>
-                Home
-            </Button>
-        </FlexWrapper>
-    </Wrapper>
-)
+class Summary extends Component {
+    render() {
+        const { questions, answers } = this.props
+
+        return (
+            <Wrapper>
+                <FlexWrapper>
+                    <Title>Summary</Title>
+                </FlexWrapper>
+                <Wrapper>
+                    {questions.map((question, index) => {
+                        return (
+                            <QAWrapper key={index}>
+                                <Question>{question.description}</Question>
+                                <Answer>{answers[index]}</Answer>
+                            </QAWrapper>
+                        )
+                    })}
+                </Wrapper>
+                <FlexWrapper>
+                    <Button primary size={30} bold linkTo={`/`}>
+                        Home
+                    </Button>
+                </FlexWrapper>
+            </Wrapper>
+        )
+    }
+}
 
 export default Summary

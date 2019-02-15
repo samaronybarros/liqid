@@ -108,7 +108,12 @@ class Survey extends Component {
                         )}
                     />
                     <QuestionRoutes />
-                    <Route path="/summary" component={() => Summary(this.state)} />
+                    <Route
+                        path="/summary"
+                        component={() => (
+                            <Summary questions={this.state.questions} answers={this.state.answers} />
+                        )}
+                    />
                 </Panel>
             </Router>
         )
