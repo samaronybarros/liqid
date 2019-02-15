@@ -6,5 +6,8 @@ export default {
     dividerColor: '#EEEEEE',
     textHeaderColor: '#FFFFFF',
 
+    questionColor: '#000092',
+    answerColor: '#222222',
+
     shadow: '#C9C9C9',
 }
