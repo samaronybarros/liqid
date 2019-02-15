@@ -2,14 +2,12 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import { Panel } from '../components/elements/Panel'
+import { Home, Summary } from '../components/pages'
 
 import api from '../api'
 import Question from './Question'
 
-import { Home, Summary } from '../components/pages'
-
 //******************** HAVE TO HAVE ************************************
-//TODO: Script to create fake-data
 //TODO: Software Documentation at GitHub
 
 //******************** GOOD TO HAVE ************************************
@@ -57,13 +55,21 @@ class Survey extends Component {
 
         api.loadQuestions().then((req, res) => {
             this.setState({
-                isLoading: false,
                 questions: req.data.data,
             })
         })
+
+        /**As loading is fast, this timeout
+         * is only illustrative */
+        setTimeout(() => {
+            this.setState({
+                isLoading: false,
+            })
+        }, 1000)
     }
 
     render() {
+        console.log('TCL: Survey -> render -> this.state.isLoading', this.state.isLoading)
         const RouteQuestion = index => {
             const previous = index > 0 ? this.state.questions[index - 1]._id : null
             const next = index < this.state.questions.length - 1 ? this.state.questions[index + 1]._id : null
@@ -79,9 +85,7 @@ class Survey extends Component {
                     allQuestion={this.state.questions}
                     allAnswers={this.state.answers}
                 />
-            ) : (
-                <p>Loading...</p>
-            )
+            ) : null
         }
 
         const QuestionRoutes = () => {
@@ -103,7 +107,11 @@ class Survey extends Component {
                         exact
                         path="/"
                         component={() => (
-                            <Home questions={this.state.questions} onStartSurvey={this.handleStartSurvey} />
+                            <Home
+                                questions={this.state.questions}
+                                onStartSurvey={this.handleStartSurvey}
+                                loading={this.state.isLoading}
+                            />
                         )}
                     />
                     <QuestionRoutes />

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 import { Button } from '../elements'
+import { LoadingSurvey } from '../elements/Loader'
 
 import Style from '../elements/Style'
 
@@ -10,7 +11,6 @@ const Wrapper = styled.div`
     flex-direction: column;
     margin-top: 50px;
     margin-bottom: 50px;
-    display: flex;
     align-items: center;
     justify-content: center;
 `
@@ -36,9 +36,11 @@ class Home extends Component {
     }
 
     render() {
-        const { questions } = this.props
+        const { questions, loading } = this.props
 
-        return (
+        console.log('TCL: Home -> render -> loading', loading)
+
+        return !loading ? (
             <Wrapper>
                 <Title>Online Survey</Title>
                 <Text>
@@ -59,6 +61,8 @@ class Home extends Component {
                     Start Survey
                 </Button>
             </Wrapper>
+        ) : (
+            <LoadingSurvey />
         )
     }
 }
