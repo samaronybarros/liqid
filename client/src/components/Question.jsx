@@ -38,10 +38,6 @@ class Question extends Component {
         this.setState({ value: `${value} - ${description}` })
     }
 
-    handleClickBack = () => {
-        console.log('Back')
-    }
-
     handleClickNext = () => {
         this.props.updateAnswer(this.state.index, this.state.value)
 
@@ -54,7 +50,13 @@ class Question extends Component {
         }
     }
 
-    componentDidMount = () => this.setState({ index: this.props.index })
+    componentDidMount = () => {
+        this.setState({ index: this.props.index })
+
+        if (this.props.allAnswers[this.props.index]) {
+            this.setState({ value: this.props.allAnswers[this.props.index] })
+        }
+    }
 
     render() {
         const { question, previous, next, index, questionsLength } = this.props
