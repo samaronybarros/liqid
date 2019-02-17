@@ -141,8 +141,9 @@ There are a lot of things to improve the App. I'll list it below:
 
 #### TODOs
 
+-   [x] Make App responsive
 -   [ ] Make input works with type: email, phone number, textarea and password
--   [ ] Beautify Summary (Maybe a kind of table)
+-   [x] Beautify Summary (Maybe a kind of table)
 -   [ ] Beautify Transition animated, converting it in a slide, not just a blink
 -   [ ] Verify the scrolling
 -   [ ] Create cards for each type of question (Maybe questions in German and English or industry and health)

@@ -11,16 +11,16 @@ const selectedradio = css`
 `
 
 const RadioButton = styled.button`
-    padding: 15px;
     background-color: ${Style.secondaryColor};
     margin: 5px;
     border: 1px solid ${Style.primaryColor};
     outline: none;
-
-    width: 8vw;
-    height: 5vw;
-
-    font-size: 14px;
+    font-size: ${Style.defaultTextSize};
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    padding: 5%;
 
     ${props => props.selected && selectedradio};
 `

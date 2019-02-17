@@ -3,15 +3,8 @@ import React, { Component } from 'react'
 import { Button, Input, ProgressBar, Radio, RadioGroup, Dropdown } from '../components/elements'
 import { Panel, PanelHeader, PanelDivider, PanelActions } from '../components/elements/Panel'
 
-import styled from 'styled-components'
-
 import api from '../api'
 import { formatAnswer } from '../utils'
-
-const Wrapper = styled.div`
-    width: 750px;
-    margin: 20px;
-`
 
 class Question extends Component {
     constructor(props) {
@@ -63,9 +56,8 @@ class Question extends Component {
 
         return (
             <Panel>
-                <Wrapper>
-                    <ProgressBar current={index} max={questionsLength} />
-                </Wrapper>
+                <ProgressBar current={index} max={questionsLength} />
+
                 <PanelHeader>{question.description}</PanelHeader>
                 {question.type === 'input' && (
                     <Input
@@ -77,7 +69,7 @@ class Question extends Component {
                 )}
                 {question.type === 'radio' && (
                     <RadioGroup name={question._id}>
-                        {question.options.map((option, index) => (
+                        {question.options.map((option, index, arr) => (
                             <Radio key={index} value={option.value} onSelect={this.handleChangeRadio}>
                                 {option.description}
                             </Radio>

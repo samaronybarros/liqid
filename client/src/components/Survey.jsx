@@ -8,13 +8,8 @@ import { Home, Summary } from '../components/pages'
 import api from '../api'
 import Question from './Question'
 
-//******************** HAVE TO HAVE ************************************
-//TODO: Software Documentation at GitHub
-
 //******************** GOOD TO HAVE ************************************
-
-//TODO: Transition animated
-//TODO: Beautify Summary (Maybe a kind of table)
+//TODO: Make it responsive
 //TODO: Make input works with type: email, phone number, textarea and password
 //TODO: Verify the scrolling
 //TODO: Create cards for each type of question

@@ -17,4 +17,7 @@ export default {
     questionSize: '18pt',
 
     defaultBorderRadius: '10px',
+
+    widthPercent: '65%',
+    childPercent: '90%',
 }

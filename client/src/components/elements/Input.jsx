@@ -9,10 +9,13 @@ const Form = styled.form`
 
 const Wrapper = styled.input`
     padding: 10px;
-    margin: 10px;
     font-size: ${Style.defaultTextSize};
     border-radius: ${Style.defaultBorderRadius};
-    width: 750px;
+
+    display: block;
+    margin: 0 auto;
+    width: ${Style.childPercent};
+
     align-self: center;
     outline: none;
     text-align: center;

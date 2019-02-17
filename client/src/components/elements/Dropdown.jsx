@@ -15,7 +15,7 @@ const Select = styled.select`
     background: no-repeat 96% 0;
     height: 29px;
     overflow: hidden;
-    width: 400px;
+    width: ${Style.childPercent};
 
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -23,6 +23,8 @@ const Select = styled.select`
 
     background-color: ${Style.primaryColor};
     color: ${Style.secondaryColor};
+
+    font-size: ${Style.defaultTextSize};
 `
 
 const Option = styled.option``

@@ -5,7 +5,7 @@ import Style from '../Style'
 
 const Wrapper = styled.div`
     background: ${Style.panelBackgroundColor};
-    width: 800px;
+    width: ${Style.widthPercent};
     box-shadow: 0px 0px 5px 5px ${Style.shadow};
     transition: 0.3s;
 
