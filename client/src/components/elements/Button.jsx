@@ -22,7 +22,7 @@ const Wrapper = styled.button`
     margin: 1em;
     padding: 0.25em 1em;
     border: 2px solid ${Style.primaryColor};
-    border-radius: 10px;
+    border-radius: ${Style.defaultBorderRadius};
     display: block;
     cursor: pointer;
 

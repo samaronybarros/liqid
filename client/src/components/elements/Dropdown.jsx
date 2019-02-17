@@ -19,7 +19,7 @@ const Select = styled.select`
 
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
-    border-radius: 10px;
+    border-radius: ${Style.defaultBorderRadius};
 
     background-color: ${Style.primaryColor};
     color: ${Style.secondaryColor};
