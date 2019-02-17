@@ -52,19 +52,7 @@ The `scripts` folder cotains the setup to create fake data to test the applicati
 
 The components are divided to make the `Survey`, so we just need `Home`, to show something about the application; `Question` that shows the questions; and the Summary to show the final results.
 
-```mermaid
-graph LR
-    App --> Survey
-    App --> Auxiliars
-    Auxiliars --> Elements
-    Auxiliars --> Pages
-    Pages --> Home
-    Pages --> Summary
-    Survey --> Home
-    Survey --> Questions
-    Survey --> Summary
-
-```
+![mermaid](doc/img/mermaid.png)
 
 ## Download
 
