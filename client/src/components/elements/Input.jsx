@@ -8,11 +8,12 @@ const Form = styled.form`
 const Wrapper = styled.input`
     padding: 10px;
     margin: 10px;
-    font-size: 10pt;
+    font-size: 12pt;
     border-radius: 10px;
     width: 750px;
     align-self: center;
     outline: none;
+    text-align: center;
 `
 
 class Input extends Component {
