@@ -17,7 +17,7 @@ const Wrapper = styled.div`
     margin: auto;
     margin-top: 10px;
 
-    border-radius: 10px;
+    border-radius: ${Style.defaultBorderRadius};
 
     &:hover {
         box-shadow: 0px 0px 8px 8px ${Style.shadow};

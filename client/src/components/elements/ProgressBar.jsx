@@ -11,7 +11,7 @@ const Wrapper = styled.div`
     background-size: ${props => props.percent}%;
     transition: all 0.2s ease;
     border: 1px solid ${Style.primaryColor};
-    border-radius: 10px;
+    border-radius: ${Style.defaultBorderRadius};
 `
 
 export default class ProgressBar extends Component {

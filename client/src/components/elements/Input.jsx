@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
+import Style from './Style'
+
 const Form = styled.form`
     margin: 5px;
 `
@@ -8,8 +10,8 @@ const Form = styled.form`
 const Wrapper = styled.input`
     padding: 10px;
     margin: 10px;
-    font-size: 12pt;
-    border-radius: 10px;
+    font-size: ${Style.defaultTextSize};
+    border-radius: ${Style.defaultBorderRadius};
     width: 750px;
     align-self: center;
     outline: none;

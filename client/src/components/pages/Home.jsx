@@ -17,7 +17,7 @@ const Wrapper = styled.div`
 `
 
 const Title = styled.p`
-    font-size: 22pt;
+    font-size: ${Style.titleSize};
     color: ${Style.primaryColor};
     font-weight: 900;
     padding: 10px;

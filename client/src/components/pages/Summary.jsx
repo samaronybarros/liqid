@@ -19,7 +19,7 @@ const FlexWrapper = styled.div`
 `
 
 const Title = styled.p`
-    font-size: 22pt;
+    font-size: ${Style.titleSize};
     color: ${Style.primaryColor};
     font-weight: 900;
 `
@@ -43,20 +43,20 @@ const LineTable = styled.tr`
     padding-left: 20px;
 
     &:hover {
-        background-color: #f5f5f5;
+        background-color: ${Style.hoverLineTableColor};
     }
 `
 
 const HeaderTable = styled.th`
     padding: 8px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid ${Style.tableLineColor};
 `
 
 const DataTable = styled.td`
     padding: 8px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid ${Style.tableLineColor};
 
     word-wrap: break-word;
     overflow-wrap: break-word;
@@ -84,16 +84,6 @@ class Summary extends Component {
                     <FlexWrapper>
                         <Title>Summary</Title>
                     </FlexWrapper>
-                    {/* <Wrapper>
-                        {questions.map((question, index) => {
-                            return (
-                                <QAWrapper key={index}>
-                                    <Question>{question.description}</Question>
-                                    <Answer>{answers[index]}</Answer>
-                                </QAWrapper>
-                            )
-                        })}
-                    </Wrapper> */}
                     <Table>
                         <TableHead>
                             <LineTable>

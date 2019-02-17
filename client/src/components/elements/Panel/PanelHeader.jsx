@@ -11,7 +11,7 @@ const Wrapper = styled.div`
 `
 
 const Label = styled.p`
-    font-size: 18pt;
+    font-size: ${Style.questionSize};
     color: ${Style.textHeaderColor};
     position: relative;
     top: 50%;
