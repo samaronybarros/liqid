@@ -32,10 +32,12 @@ class Question extends Component {
     }
 
     handleClickNext = () => {
-        this.props.updateAnswer(this.state.index, this.state.value)
+        const { updateAnswer, questionsLength, allQuestions, allAnswers } = this.props
 
-        if (this.state.index === this.props.questionsLength - 1) {
-            const answer = formatAnswer(this.props.allQuestion, this.props.allAnswers)
+        updateAnswer(this.state.index, this.state.value)
+
+        if (this.state.index === questionsLength - 1) {
+            const answer = formatAnswer(allQuestions, allAnswers)
 
             const newAnswer = { answer } //JSON.stringify({ answer })
 
@@ -44,10 +46,12 @@ class Question extends Component {
     }
 
     componentDidMount = () => {
-        this.setState({ index: this.props.index })
+        const { index, allAnswers } = this.props
 
-        if (this.props.allAnswers[this.props.index]) {
-            this.setState({ value: this.props.allAnswers[this.props.index] })
+        this.setState({ index })
+
+        if (allAnswers[index]) {
+            this.setState({ value: allAnswers[index] })
         }
     }
 
@@ -69,7 +73,7 @@ class Question extends Component {
                 )}
                 {question.type === 'radio' && (
                     <RadioGroup name={question._id}>
-                        {question.options.map((option, index, arr) => (
+                        {question.options.map((option, index) => (
                             <Radio key={index} value={option.value} onSelect={this.handleChangeRadio}>
                                 {option.description}
                             </Radio>

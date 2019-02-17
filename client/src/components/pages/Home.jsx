@@ -55,7 +55,6 @@ class Home extends Component {
                         size={30}
                         bold
                         linkTo={`/${questions.length > 0 ? questions[0]._id : '/'}`}
-                        //linkTo={'/summary'}
                         onClick={this.handleStart}>
                         Start Survey
                     </Button>

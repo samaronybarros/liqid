@@ -8,13 +8,6 @@ import { Home, Summary } from '../components/pages'
 import api from '../api'
 import Question from './Question'
 
-//******************** GOOD TO HAVE ************************************
-//TODO: Make it responsive
-//TODO: Make input works with type: email, phone number, textarea and password
-//TODO: Verify the scrolling
-//TODO: Create cards for each type of question
-//TODO: Create user for answer
-
 const PanelWrapper = styled.div`
     .fade-enter {
         opacity: 0.01;
@@ -60,16 +53,12 @@ class Survey extends Component {
 
     updateAnswer = (index, answer) => {
         const answers = this.state.answers
-
         answers[index] = answer
-
         this.setState({ answers })
     }
 
     resetAnswers = () => {
-        this.setState({
-            answers: [],
-        })
+        this.setState({ answers: [] })
     }
 
     handleStartSurvey = () => {
@@ -78,6 +67,7 @@ class Survey extends Component {
 
     componentDidMount() {
         this.setState({ isLoading: true })
+        console.log('TCL: Survey -> componentDidMount -> isLoading', this.state.isLoading)
 
         api.loadQuestions().then((req, res) => {
             this.setState({
@@ -86,8 +76,7 @@ class Survey extends Component {
             })
         })
 
-        /**As loading is fast, this timeout
-         * is only illustrative */
+        // As loading is fast, this timeout is only illustrative
         this.setState({ isLoading: true })
         setTimeout(() => {
             this.setState({
@@ -98,19 +87,21 @@ class Survey extends Component {
 
     render() {
         const RouteQuestion = index => {
-            const previous = index > 0 ? this.state.questions[index - 1]._id : null
-            const next = index < this.state.questions.length - 1 ? this.state.questions[index + 1]._id : null
+            const { questions, answers, isLoading } = this.state
 
-            return !(this.state.isLoading || this.state.questions.length === 0) ? (
+            const previous = index > 0 ? questions[index - 1]._id : null
+            const next = index < questions.length - 1 ? questions[index + 1]._id : null
+
+            return !(isLoading || questions.length === 0) ? (
                 <Question
-                    question={this.state.questions[index]}
+                    question={questions[index]}
                     index={index}
                     previous={previous}
                     next={next}
-                    questionsLength={this.state.questions.length}
+                    questionsLength={questions.length}
                     updateAnswer={this.updateAnswer}
-                    allQuestion={this.state.questions}
-                    allAnswers={this.state.answers}
+                    allQuestions={questions}
+                    allAnswers={answers}
                 />
             ) : null
         }
@@ -142,17 +133,6 @@ class Survey extends Component {
                                             <Switch>
                                                 <Route
                                                     exact
-                                                    key="summary"
-                                                    path="/summary"
-                                                    component={() => (
-                                                        <Summary
-                                                            questions={this.state.questions}
-                                                            answers={this.state.answers}
-                                                        />
-                                                    )}
-                                                />
-                                                <Route
-                                                    exact
                                                     key="home"
                                                     path="/"
                                                     component={() => (
@@ -160,6 +140,17 @@ class Survey extends Component {
                                                             questions={this.state.questions}
                                                             onStartSurvey={this.handleStartSurvey}
                                                             loading={this.state.isLoading}
+                                                        />
+                                                    )}
+                                                />
+                                                <Route
+                                                    exact
+                                                    key="summary"
+                                                    path="/summary"
+                                                    component={() => (
+                                                        <Summary
+                                                            questions={this.state.questions}
+                                                            answers={this.state.answers}
                                                         />
                                                     )}
                                                 />
