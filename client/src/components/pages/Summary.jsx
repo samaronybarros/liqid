@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import Style from '../elements/Style'
 
+import { Panel } from '../elements/Panel'
 import { Button } from '../elements'
 
 const Wrapper = styled.div``
@@ -50,26 +51,28 @@ class Summary extends Component {
         const { questions, answers } = this.props
 
         return (
-            <Wrapper>
-                <FlexWrapper>
-                    <Title>Summary</Title>
-                </FlexWrapper>
+            <Panel>
                 <Wrapper>
-                    {questions.map((question, index) => {
-                        return (
-                            <QAWrapper key={index}>
-                                <Question>{question.description}</Question>
-                                <Answer>{answers[index]}</Answer>
-                            </QAWrapper>
-                        )
-                    })}
+                    <FlexWrapper>
+                        <Title>Summary</Title>
+                    </FlexWrapper>
+                    <Wrapper>
+                        {questions.map((question, index) => {
+                            return (
+                                <QAWrapper key={index}>
+                                    <Question>{question.description}</Question>
+                                    <Answer>{answers[index]}</Answer>
+                                </QAWrapper>
+                            )
+                        })}
+                    </Wrapper>
+                    <FlexWrapper>
+                        <Button primary size={30} bold linkTo={`/`}>
+                            Home
+                        </Button>
+                    </FlexWrapper>
                 </Wrapper>
-                <FlexWrapper>
-                    <Button primary size={30} bold linkTo={`/`}>
-                        Home
-                    </Button>
-                </FlexWrapper>
-            </Wrapper>
+            </Panel>
         )
     }
 }

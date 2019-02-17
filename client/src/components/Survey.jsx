@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import styled from 'styled-components'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
-import { Panel } from '../components/elements/Panel'
 import { Home, Summary } from '../components/pages'
 
 import api from '../api'
@@ -11,13 +12,45 @@ import Question from './Question'
 //TODO: Software Documentation at GitHub
 
 //******************** GOOD TO HAVE ************************************
-//TODO: Create user for answer
-//TODO: Order question by sort field
+
 //TODO: Transition animated
 //TODO: Beautify Summary (Maybe a kind of table)
+//TODO: Make input works with type: email, phone number, textarea and password
 //TODO: Verify the scrolling
 //TODO: Create cards for each type of question
-//TODO: Make input works with type: email, phone number, textarea and password
+//TODO: Create user for answer
+
+const PanelWrapper = styled.div`
+    .fade-enter {
+        opacity: 0.01;
+        transform: translate(-100%, 0);
+    }
+
+    .fade-enter.fade-enter-active {
+        opacity: 1;
+        transition: opacity 300ms ease-in;
+    }
+
+    .fade-exit {
+        opacity: 1;
+    }
+
+    .fade-exit.fade-exit-active {
+        opacity: 0.01;
+        transition: opacity 300ms ease-in;
+    }
+
+    div.transition-group {
+        position: relative;
+    }
+
+    section.route-section {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+`
 
 class Survey extends Component {
     constructor(props) {
@@ -36,7 +69,6 @@ class Survey extends Component {
         answers[index] = answer
 
         this.setState({ answers })
-        console.log('TCL: Survey -> updateAnswer -> answers', this.state.answers)
     }
 
     resetAnswers = () => {
@@ -54,12 +86,14 @@ class Survey extends Component {
 
         api.loadQuestions().then((req, res) => {
             this.setState({
+                isLoadin: false,
                 questions: req.data.data,
             })
         })
 
         /**As loading is fast, this timeout
          * is only illustrative */
+        this.setState({ isLoading: true })
         setTimeout(() => {
             this.setState({
                 isLoading: false,
@@ -68,7 +102,6 @@ class Survey extends Component {
     }
 
     render() {
-        console.log('TCL: Survey -> render -> this.state.isLoading', this.state.isLoading)
         const RouteQuestion = index => {
             const previous = index > 0 ? this.state.questions[index - 1]._id : null
             const next = index < this.state.questions.length - 1 ? this.state.questions[index + 1]._id : null
@@ -101,26 +134,49 @@ class Survey extends Component {
 
         return (
             <Router>
-                <Panel>
+                <PanelWrapper>
                     <Route
-                        exact
-                        path="/"
-                        component={() => (
-                            <Home
-                                questions={this.state.questions}
-                                onStartSurvey={this.handleStartSurvey}
-                                loading={this.state.isLoading}
-                            />
-                        )}
+                        render={({ location }) => {
+                            return (
+                                <TransitionGroup className="transition-group">
+                                    <CSSTransition
+                                        key={location.key}
+                                        timeout={{ enter: 300, exit: 300 }}
+                                        classNames="fade">
+                                        <section className="route-section">
+                                            <Switch>
+                                                <Route
+                                                    exact
+                                                    key="summary"
+                                                    path="/summary"
+                                                    component={() => (
+                                                        <Summary
+                                                            questions={this.state.questions}
+                                                            answers={this.state.answers}
+                                                        />
+                                                    )}
+                                                />
+                                                <Route
+                                                    exact
+                                                    key="home"
+                                                    path="/"
+                                                    component={() => (
+                                                        <Home
+                                                            questions={this.state.questions}
+                                                            onStartSurvey={this.handleStartSurvey}
+                                                            loading={this.state.isLoading}
+                                                        />
+                                                    )}
+                                                />
+                                                <QuestionRoutes />
+                                            </Switch>
+                                        </section>
+                                    </CSSTransition>
+                                </TransitionGroup>
+                            )
+                        }}
                     />
-                    <QuestionRoutes />
-                    <Route
-                        path="/summary"
-                        component={() => (
-                            <Summary questions={this.state.questions} answers={this.state.answers} />
-                        )}
-                    />
-                </Panel>
+                </PanelWrapper>
             </Router>
         )
     }
