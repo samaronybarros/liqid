@@ -18,32 +18,60 @@ const FlexWrapper = styled.div`
     height: auto;
 `
 
-const QAWrapper = styled.div`
-    display: flex;
-    flex-direction: row;
-`
-
 const Title = styled.p`
     font-size: 22pt;
     color: ${Style.primaryColor};
     font-weight: 900;
 `
 
-const Question = styled.p`
-    font-size: 12pt;
-    color: ${Style.questionColor};
-    margin-left: 15px;
-    margin-right: 15px;
+const Table = styled.table`
+    margin: 0 auto;
     text-align: left;
-    font-weight: 900;
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 90%;
+    font-size: 18px;
+
+    table-layout: fixed;
 `
 
-const Answer = styled.p`
-    font-size: 12pt;
-    color: ${Style.answerColor};
-    margin-left: 15px;
-    margin-right: 15px;
+const TableHead = styled.thead``
+const TableBody = styled.tbody``
+
+const LineTable = styled.tr`
+    cursor: default;
+    padding-left: 20px;
+
+    &:hover {
+        background-color: #f5f5f5;
+    }
+`
+
+const HeaderTable = styled.th`
+    padding: 8px;
     text-align: left;
+    border-bottom: 1px solid #ddd;
+`
+
+const DataTable = styled.td`
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+`
+
+const HeaderQuestion = styled(HeaderTable)`
+    color: ${Style.primaryColor};
+`
+
+const DataQuestion = styled(DataTable)`
+    color: ${Style.primaryColor};
+`
+
+const DataAnswer = styled(DataTable)`
+    color: ${Style.defaultTextColor};
 `
 
 class Summary extends Component {
@@ -56,7 +84,7 @@ class Summary extends Component {
                     <FlexWrapper>
                         <Title>Summary</Title>
                     </FlexWrapper>
-                    <Wrapper>
+                    {/* <Wrapper>
                         {questions.map((question, index) => {
                             return (
                                 <QAWrapper key={index}>
@@ -65,7 +93,25 @@ class Summary extends Component {
                                 </QAWrapper>
                             )
                         })}
-                    </Wrapper>
+                    </Wrapper> */}
+                    <Table>
+                        <TableHead>
+                            <LineTable>
+                                <HeaderQuestion>Question</HeaderQuestion>
+                                <HeaderTable>Answer</HeaderTable>
+                            </LineTable>
+                        </TableHead>
+                        <TableBody>
+                            {questions.map((question, index) => {
+                                return (
+                                    <LineTable key={index}>
+                                        <DataQuestion>{question.description}</DataQuestion>
+                                        <DataAnswer>{answers[index]}</DataAnswer>
+                                    </LineTable>
+                                )
+                            })}
+                        </TableBody>
+                    </Table>
                     <FlexWrapper>
                         <Button primary size={30} bold linkTo={`/`}>
                             Home
