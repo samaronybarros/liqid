@@ -44,13 +44,11 @@ class Home extends Component {
                 <Wrapper>
                     <Title>Online Survey</Title>
                     <Text>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sagittis enim ac turpis
-                        facilisis, ac mollis nisl pharetra. Suspendisse ut suscipit risus. Nam sodales magna
-                        at leo egestas, sit amet ullamcorper sem convallis. Pellentesque sodales diam ac est
-                        ullamcorper, et auctor dolor dignissim. Donec lacinia posuere quam, id rhoncus dui
-                        pharetra quis. Etiam sed efficitur eros. Quisque nec condimentum nibh, quis viverra
-                        erat. Morbi scelerisque non purus sit amet porta. Curabitur pretium molestie enim, in
-                        pretium nisl ultrices et.
+                        A survey is not just an online tool that helps you jot down a list of questions, it's
+                        much more than that. It’s an amazing way to gain insights into what your audience
+                        thinks, feels, and most importantly—what it wants. You know that you should know about
+                        your clients to do the best for them. Next, we’ll go through some example questions an
+                        obtaining the summary of them in this software.
                     </Text>
                     <Button
                         primary
