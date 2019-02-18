@@ -67,7 +67,6 @@ class Survey extends Component {
 
     componentDidMount() {
         this.setState({ isLoading: true })
-        console.log('TCL: Survey -> componentDidMount -> isLoading', this.state.isLoading)
 
         api.loadQuestions().then((req, res) => {
             this.setState({
